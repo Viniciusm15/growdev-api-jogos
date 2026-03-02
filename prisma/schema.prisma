@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client"
+  output   = "./src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Jogo {
+  id           String   @id @default(uuid()) @db.Uuid
+  nome         String   @db.VarChar(30)
+  genero       String   @db.VarChar(20)
+  preco        Decimal
+  tamanho      Int
+  dtLancamento DateTime @map("dt_lancamento") @db.Date
+  multiplayer  Boolean  @default(true)
+
+  personagens Personagem[]
+
+  @@map("jogo")
+}
+
+model Personagem {
+  id            String   @id @default(uuid()) @db.Uuid
+  nome          String   @db.VarChar(30)
+  idade         Int      @db.SmallInt
+  forca         Int      @db.SmallInt
+  inteligencia  Int      @db.SmallInt
+  habilidades   String
+
+  idJogo        String   @map("id_jogo") @db.Uuid
+  jogo          Jogo     @relation(fields: [idJogo], references: [id])
+
+  @@map("personagem")
+}
