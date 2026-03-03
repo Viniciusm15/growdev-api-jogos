@@ -67,7 +67,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina:
 ### 1️⃣ Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/api-jogos-personagens.git
+git clone https://github.com/Viniciusm15/growdev-api-jogos.git
 cd api-jogos-personagens
 ```
 
